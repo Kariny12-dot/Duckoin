@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login e Cadastro</title>
+   <link rel="icon do web site" type="png" 
+    href="c:\Users\km586\Downloads\Imagem do WhatsApp de 2025-05-12 à(s) 10.51.08_dc13568b.png">
+  <style>
+     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+   body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #023047
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #6f23b6;
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 40px;
+  width: 350px;
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+  gap: 5px;
+}
+
+
+.areaLogin img {
+    width: 420px;
+}
+
+.formLogin h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.3em;
+}
+
+.formLogin p {
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.formLogin input {
+    width: 90%;
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+}
+
+
+.formLogin input:focus {
+    border: 1px solid #e90202;
+}
+
+.formLogin label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.formLogin a {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #555;
+    transition: all linear 160ms;
+}
+
+.formLogin a:hover {
+    color: #e90202;
+}
+
+.btn {
+    background-color: #f8b600;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #f8b600;
+
+}
+.hidden{
+    display: none;
+}
+    .mensagem {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .sucesso {
+      color: green;
+    }
+
+    .erro {
+      color: red;
+    }
+    .modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <!-- FORMULÁRIO LOGIN -->
+    <form id="loginForm" class="formLogin">
+      <h1>Login</h1>
+      <p>Digite os seus dados de acesso no campo abaixo.</p>
+
+      <label for="emailLogin">E-mail</label>
+      <input type="email" id="emailLogin" placeholder="Digite seu e-mail" required>
+
+      <label for="senhaLogin">Senha</label>
+      <input type="password" id="senhaLogin" placeholder="Digite sua senha" required>
+
+     <a class="link" href="#" onclick="mostrarCadastro()">Não tenho cadastro</a><br>
+     <a class="link" href="#" onclick="abrirModal()">Esqueci minha senha</a>
+
+     <br>
+     
+      <input type="submit" class="btn" value="Acessar">
+      <div class="mensagemErroLogin" id="mensagemLogin"></div>
+     <p id="mensagemErroLogin" style="color: red; font-weight: bold;"></p>
+    </form>
+
+    <!-- FORMULÁRIO CADASTRO -->
+    <form id="cadastroForm" class="formLogin hidden">
+      <h1>Cadastro</h1>
+      <p>Preencha os campos para criar sua conta.</p><br>
+
+      <form id="cadastroForm">
+
+      <label for="emailCadastro">E-mail</label>
+      <input type="email" id="emailCadastro" placeholder="Digite seu e-mail" required>
+
+      <label for="senhaCadastro">Senha</label>
+      <input type="password" id="senhaCadastro" placeholder="Digite sua senha" required>
+
+      <label for="confsenha">Confirmar Senha</label>
+      <input type="password" id="confsenha" placeholder="Confirme sua senha" required>
+
+      <a class="link" href="#" onclick="mostrarLogin()">Já tenho cadastro</a>
+
+      <input type="submit" class="btn" value="Cadastrar">
+      <div class="mensagem" id="mensagemCadastro"></div>
+      </form>
+    
+    <!-- MODAL RECUPERAÇÃO DE SENHA -->
+<div id="modalRecuperarSenha" class="modal hidden">
+  <div class="modal-content">
+    <h2>Recuperar Senha</h2>
+    <p>Informe seu e-mail para simular a recuperação.</p>
+    <input type="email" id="emailRecuperacao" placeholder="Digite seu e-mail">
+    <div id="mensagemRecuperacao" style="margin-top: 10px; font-weight: bold;"></div>
+    <button onclick="enviarRecuperacao()">Enviar</button>
+    <button onclick="fecharModal()" style="margin-left: 10px;">Cancelar</button>
+  </div>
+</div>
+  </form>
+  </div>
+
+  <!-- FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEVPCoe_FcwfNxSEpbpcG9c2BjIBc3Tao",
+      authDomain: "projetoduckoin.firebaseapp.com",
+      projectId: "projetoduckoin",
+      storageBucket: "projetoduckoin.firebasestorage.app",
+      messagingSenderId: "893775717859",
+      appId: "1:893775717859:web:aa632254cea8039be76cd6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    const loginForm = document.getElementById("loginForm");
+    const cadastroForm = document.getElementById("cadastroForm");
+
+    window.mostrarLogin = () => {
+      loginForm.style.display = "block";
+      cadastroForm.style.display = "none";
+      document.getElementById("mensagemLogin").textContent = "";
+    };
+
+    window.mostrarCadastro = () => {
+      cadastroForm.style.display = "block";
+      loginForm.style.display = "none";
+      document.getElementById("mensagemCadastro").textContent = "";
+    };
+
+    mostrarLogin();
+
+    // Cadastro
+  function validarSenha(senha) {
+  const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+  return regex.test(senha);
+}
+
+// Cadastro
+cadastroForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("emailCadastro").value.trim().toLowerCase();
+  const senha = document.getElementById("senhaCadastro").value.trim();
+  const confsenha = document.getElementById("confsenha").value.trim();
+  const msg = document.getElementById("mensagemCadastro");
+
+  msg.textContent = "";
+  msg.style.color = "red";
+
+  if (!email || !senha || !confsenha) {
+    msg.textContent = "Preencha todos os campos.";
+    return;
+  }
+
+  if (!validarSenha(senha)) {
+    msg.textContent = "A senha deve conter no mínimo 8 caracteres, 1 número e 1 caractere especial.";
+    return;
+  }
+
+  if (senha !== confsenha) {
+    msg.textContent = "As senhas não coincidem.";
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+    const user = userCredential.user;
+
+    await set(ref(db, 'usuarios/' + user.uid), {
+      email: email,
+      criadoEm: new Date().toISOString()
+    });
+
+    msg.style.color = "green";
+    msg.textContent = "Conta criada com sucesso!";
+    setTimeout(() => {
+      mostrarLogin();
+    }, 2000);
+  } catch (error) {
+    if (error.code === "auth/email-already-in-use") {
+      msg.textContent = "Este e-mail já está cadastrado.";
+    } else if (error.code === "auth/invalid-email") {
+      msg.textContent = "E-mail inválido.";
+    } else {
+      msg.textContent = "Erro ao cadastrar: " + error.message;
+    }
+  }
+});
+
+// Login
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("emailLogin").value.trim().toLowerCase();
+  const senha = document.getElementById("senhaLogin").value.trim();
+  const msg = document.getElementById("mensagemErroLogin");
+
+  msg.textContent = "";
+  msg.style.color = "red";
+
+  if (!email || !senha) {
+    msg.textContent = "Preencha todos os campos.";
+    return;
+  }
+
+  if (!validarSenha(senha)) {
+    msg.textContent = "A senha deve conter no mínimo 8 caracteres, 1 número e 1 caractere especial.";
+    return;
+  }
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+    msg.style.color = "green";
+    msg.textContent = "Login realizado com sucesso!";
+    setTimeout(() => {
+      window.location.href = "Duckoin - Assistente financeiro.html";
+    }, 1500);
+  } catch (error) {
+    if (error.code === "auth/user-not-found") {
+      msg.textContent = "Conta não encontrada. Verifique seu e-mail.";
+    } else if (error.code === "auth/wrong-password") {
+      msg.textContent = "Senha incorreta. Tente novamente.";
+    } else if (error.code === "auth/invalid-email") {
+      msg.textContent = "E-mail inválido.";
+    } else {
+      msg.textContent = "Erro ao fazer login. Tente novamente.";
+    }
+  }
+});
+  </script>
+
+  <script>
+
+window.abrirModal = () => {
+  document.getElementById("modalRecuperarSenha").classList.remove("hidden");
+  document.getElementById("mensagemRecuperacao").textContent = "";
+  document.getElementById("emailRecuperacao").value = "";
+};
+
+window.fecharModal = () => {
+  document.getElementById("modalRecuperarSenha").classList.add("hidden");
+};
+
+window.enviarRecuperacao = () => {
+  const email = document.getElementById("emailRecuperacao").value.trim();
+  const msg = document.getElementById("mensagemRecuperacao");
+
+  if (!email) {
+    msg.style.color = "red";
+    msg.textContent = "Digite um e-mail.";
+    return;
+  }
+
+  msg.style.color = "green";
+  msg.textContent = `E-mail enviado para ${email}`;
+};
+
+  </script>
+</body>
+</html>
