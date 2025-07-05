@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duckoin - Assistente financeiro</title>
+  <link rel="icon do web site" type="png" 
+    href="c:\Users\km586\Downloads\Imagem do WhatsApp de 2025-05-12 à(s) 10.51.08_dc13568b.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #5c2d91;
+    }
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #5c2d91;
+    }
+    .menu {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 60px;
+  flex-grow: 1;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+  transition: color 0.3s;
+}
+
+.menu li a:hover {
+  color: #5c2d91;
+}
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 5%;
+      background-color: #5c2d91;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 50%;
+      color: #000;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-text .btn {
+      padding: 0.75rem 1.5rem;
+      background-color: #ffbc00;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .hero-img img {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .section {
+      padding: 4rem 5%;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #5c2d91;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #f1f1f1;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 280px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      color: #5c2d91;
+      margin-bottom: 1rem;
+    }
+      .sobre-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 5%;
+      background-color: #fdfdfd;
+      flex-wrap: wrap;
+    }
+
+    .sobre-img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .sobre-img img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .sobre-conteudo {
+      flex: 1;
+      padding: 0 2rem;
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .sobre-conteudo h2 {
+      color: #5c2d91;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .sobre-texto {
+      min-height: 140px;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      transition: opacity 0.5s ease;
+    }
+
+    .sobre-botoes {
+      display: flex;
+      gap: 10px;
+    }
+
+    .sobre-botoes button {
+      background-color: #5c2d91;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .sobre-botoes button:hover {
+      background-color: #4a2080;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-text, .hero-img, .sobre-conteudo, .sobre-img {
+        max-width: 100%;
+      }
+
+      .sobre-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sobre-conteudo {
+        padding: 1rem 0;
+      }
+    }
+   .footer {
+  background-color: #241f3a;
+  color: #ffffff;
+  padding: 30px 60px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-left .logo {
+  height: 30px;
+}
+
+.by-solvex {
+  font-size: 14px;
+  color: #d1d1d1;
+}
+.footer {
+  background:#4a2080;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-info {
+  flex: 1 1 300px;
+  padding: 10px;
+}
+
+.footer-info p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.footer-info i {
+  margin-right: 10px;
+  color: #f8b600;
+}
+
+.footer-form {
+  flex: 1 1 350px;
+  padding: 10px;
+}
+
+.footer-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-form input,
+.footer-form textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.footer-form button {
+  background-color: #eed286;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.footer-form button:hover {
+  background-color: #f8b600;
+}
+
+.social-text {
+  font-size: 14px;
+  color: #d1d1d1;
+}
+
+.social-icons a {
+  color: #ffffff;
+  margin: 0 5px;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #fcb900;
+}
+
+.footer-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #cccccc;
+}
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-text, .hero-img {
+        max-width: 100%;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+    .btnLogar{
+      background-color: #f8b600;
+      padding: 10px 16px;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+     .simulador-section {
+      padding: 4rem 5%;
+      background-color: #a57cda;
+      text-align: center;
+    }
+
+    .simulador-section input {
+      padding: 10px;
+      margin: 5px;
+      width: 200px;
+    }
+
+    .simulador-section button {
+      padding: 10px 20px;
+      background-color: #5c2d91;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .simulador-section button:hover {
+      background-color: #4a2080;
+    }
+
+    .resultado-simulador {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .btnLogar, #userImage {
+      transition: all 0.3s ease;
+    }
+    #userImage {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: none;
+      cursor: pointer;
+    }
+    .menu ul a {
+      margin-right: 15px;
+      text-decoration: none;
+    }
+  </style>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
+  <script>
+    // Configuração do seu Firebase
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_DOMINIO.firebaseapp.com",
+      projectId: "SEU_PROJECT_ID",
+      storageBucket: "SEU_BUCKET",
+      messagingSenderId: "SEU_ID",
+      appId: "SEU_APP_ID"
+    };
+
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Duckoin</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body id="inicio">
+
+  <header class="header">
+    <h1 class="logo">Duckoin</h1>
+    <nav class="menu">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#funcionalidades">Funcionalidades</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a href="Login e cadastro.html" class="btnLogar" id="btnLogin">Login</a>
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="userImage" alt="Usuário logado" style="display: none; width: 40px;">
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Controle suas finanças com facilidade</h1>
+      <p>Organize seus gastos, crie metas e tenha total controle sobre seu dinheiro com a Duckoin.</p>
+      <a href="#funcionalidades" class="btn">Comece agora</a>
+    </div>
+    <div class="hero-img">
+      <img src="c:\Users\km586\Downloads\Imagem do WhatsApp de 2025-05-12 à(s) 10.51.08_dc13568b.png" alt="Pato Investidor">
+    </div>
+  </section>
+
+  <section class="simulador-section" id="funcionalidades">
+    <h2>Simulador de Meta Financeira</h2>
+    <p>Informe o valor que deseja alcançar e quanto pretende economizar por mês:</p>
+    <input type="number" id="valorMeta" placeholder="Valor da meta (R$)">
+    <input type="number" id="economiaMensal" placeholder="Economia mensal (R$)">
+    <button onclick="calcularMeta()">Simular</button>
+    <p class="resultado-simulador" id="resultadoMeta"></p>
+  </section>
+
+  <section class="simulador-section">
+    <h2>Calculadora de Gastos Mensais</h2>
+    <p>Informe seus gastos e veja o total:</p>
+    <input type="number" id="gastoAlimentacao" placeholder="Alimentação (R$)">
+    <input type="number" id="gastoTransporte" placeholder="Transporte (R$)">
+    <input type="number" id="gastoOutros" placeholder="Outros gastos (R$)">
+    <button onclick="calcularGastos()">Calcular Total</button>
+    <p class="resultado-simulador" id="resultadoGastos"></p>
+  </section>
+
+  <section class="sobre-section" id="sobre">
+    <div class="sobre-img">
+      <img src="c:\Users\km586\Downloads\(10.03 editado)LogoEmpresa_solveX.png" alt="Equipe Duckoin">
+    </div>
+    <div class="sobre-conteudo">
+      <h2>Sobre Nós</h2>
+      <p class="sobre-texto" id="textoSobre">A Duckoin é uma plataforma pensada para facilitar a vida financeira de jovens estudantes e trabalhadores, trazendo praticidade e clareza no controle de gastos.</p>
+      <div class="sobre-botoes">
+        <button onclick="voltarTexto()">◀</button>
+        <button onclick="proximoTexto()">▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Firebase Auth Login/Logout -->
+  <script>
+    firebase.auth().onAuthStateChanged(function(user) {
+      const btnLogin = document.getElementById('btnLogin');
+      const userImage = document.getElementById('userImage');
+
+      if (user) {
+        btnLogin.style.display = 'none';
+        userImage.style.display = 'inline-block';
+      } else {
+        btnLogin.style.display = 'inline-block';
+        userImage.style.display = 'none';
+      }
+    });
+  </script>
+
+  <!-- Simuladores -->
+  <script>
+    function calcularMeta() {
+      const valor = parseFloat(document.getElementById('valorMeta').value);
+      const economia = parseFloat(document.getElementById('economiaMensal').value);
+
+      if (valor && economia && economia > 0) {
+        const meses = Math.ceil(valor / economia);
+        document.getElementById('resultadoMeta').textContent = `Você alcançará sua meta em aproximadamente ${meses} mês(es).`;
+      } else {
+        document.getElementById('resultadoMeta').textContent = 'Por favor, preencha todos os campos corretamente.';
+      }
+    }
+
+    function calcularGastos() {
+      const a = parseFloat(document.getElementById('gastoAlimentacao').value) || 0;
+      const t = parseFloat(document.getElementById('gastoTransporte').value) || 0;
+      const o = parseFloat(document.getElementById('gastoOutros').value) || 0;
+      const total = a + t + o;
+      document.getElementById('resultadoGastos').textContent = `Seu gasto mensal total é de R$ ${total.toFixed(2)}`;
+    }
+  </script>
+
+  <!-- Texto Sobre Nós com setas -->
+  <script>
+    const textos = [
+      "A Duckoin é uma plataforma pensada para facilitar a vida financeira de jovens estudantes e trabalhadores, trazendo praticidade e clareza no controle de gastos. Voltado principalmente ao público jovem , o aplicativo permite registrar e categorizar receitas e despesas , gerar relatórios e gráficos personalizados." ,
+      "A SolveX é a empresa por trás da Duckoin, comprometida com o desenvolvimento de soluções acessíveis e eficientes para o cotidiano financeiro.  Nossa equipe multidisciplinar reúne profissionais qualificados em desenvolvimento , análise e testes, trabalhando com metodologias modernas para garantir produtos de alta qualidade.",
+      "Nosso projeto ajuda você a organizar despesas, acompanhar metas e receber alertas em tempo real, promovendo educação financeira de forma simples e intuitiva. A ideia é oferecer uma solução acessível , educativa e adaptada principalmente ao público jovem , utilizando uma abordagem leve e amigável para tratar um tema muitas vezes complexo: o dinheiro."
+    ];
+
+    let indiceTexto = 0;
+
+    function atualizarTexto() {
+      const texto = document.getElementById("textoSobre");
+      texto.style.opacity = 0;
+      setTimeout(() => {
+        texto.textContent = textos[indiceTexto];
+        texto.style.opacity = 1;
+      }, 300);
+    }
+
+    function proximoTexto() {
+      indiceTexto = (indiceTexto + 1) % textos.length;
+      atualizarTexto();
+    }
+
+    function voltarTexto() {
+      indiceTexto = (indiceTexto - 1 + textos.length) % textos.length;
+      atualizarTexto();
+    }
+  </script>
+</body>
+</html>
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+ <footer class="footer">
+    <div class="footer-left">
+    </div>
+
+   <footer class="footer" id="contato">
+  <div class="footer-container">
+    <div class="footer-info">
+      <p><i class="fa-solid fa-location-dot"></i>Rua beatriz larragoti lucas , s/n , Cidade nova RJ/(uf) 33</p>
+      <p><i class="fa-solid fa-envelope"></i> SolveX@gmail.com</p>
+      <p><i class="fa-solid fa-phone"></i> (123) 456-78909</p>
+      <p><i class="fa-regular fa-clock"></i> Segunda - Sexta: 9:00 – 17:00</p>
+      <p><i class="fa-regular fa-clock"></i> Sabado: 10:00 – 15:00</p>
+      <p><i class="fa-regular fa-clock"></i> Domingo: Fechado</p>
+      <p><i class="fa-solid fa-globe"></i> www.Duckoin.com.br </p>
+    </div>
+    
+    <div class="footer-form">
+      <form>
+        <input type="text" placeholder="Seu nome" required />
+        <input type="email" placeholder="Seu email" required />
+        <textarea placeholder="Sua mensagem" rows="4" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+
+  <div class="footer-message">
+    <p>✨ Obrigado por chegar até aqui. Esperamos que nossa solução te ajude a alcançar seus objetivos com mais segurança e tranquilidade. 💜</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
